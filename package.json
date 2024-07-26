@@ -2,10 +2,10 @@
     "name": "typewriter",
     "displayName": "Typewriter",
     "description": "Human like typing for GIFs and live demos. No more typos in front of an audience!",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "publisher": "dansilver",
     "engines": {
-        "vscode": "^1.5.0"
+        "vscode": "^1.74.0"
     },
     "categories": [
         "Other"
@@ -43,15 +43,17 @@
     "scripts": {
         "vscode:prepublish": "tsc -p ./",
         "compile": "tsc -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "node ./node_modules/vscode/bin/test"
+        "test": "node ./node_modules/vscode/bin/test",
+		"package": "vsce package",
+		"vscode:install": "code --install-extension typewriter-1.1.0.vsix",
+		"patch": "npm run package && npm run install"
     },
     "devDependencies": {
-        "typescript": "^2.0.3",
-        "vscode": "^1.0.0",
-        "mocha": "^2.3.3",
-        "@types/node": "^6.0.40",
-        "@types/mocha": "^2.2.32"
+		"typescript": "^5.3.3",
+		"mocha": "^10.3.0",
+        "@types/vscode": "^1.73.0",
+		"@types/node": "^20.11.0",
+		"@types/mocha": "^10.0.0"
     },
     "icon": "assets/1481463247_package_wordprocessing_iconfinder.png",
     "repository": {
