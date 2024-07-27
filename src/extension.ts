@@ -15,7 +15,7 @@ export function activate(context: vscode.ExtensionContext) {
   let setTypewriterCmd = vscode.commands.registerCommand('typewriter.setTypewriter', () => {
     var editor = vscode.window.activeTextEditor
     if (!editor) {
-      return // No open text editor
+      return
     }
     var selection = editor.selection
     typewriterBuffer = editor.document.getText(selection)
@@ -27,6 +27,7 @@ export function activate(context: vscode.ExtensionContext) {
 
   context.subscriptions.push(playTypewriterCmd)
   context.subscriptions.push(setTypewriterCmd)
+  context.subscriptions.push(pausePlaybackCmd)
 }
 
 export function deactivate() {}

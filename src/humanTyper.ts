@@ -1,4 +1,4 @@
-import { window, workspace, Position, Selection, TextEditor } from 'vscode'
+import { window, Position, Selection, TextEditor } from 'vscode'
 
 const charsToPauseOn = []
 let paused = false
@@ -16,7 +16,7 @@ let resumeCall
 export function type(textToInsert: string, minSpeed: number, maxSpeed: number) {
   var editor = window.activeTextEditor
   if (!editor) {
-    return // No open text editor
+    return
   }
 
   typeTextRecursive(textToInsert, editor, editor.selection.end, minSpeed, maxSpeed)
