@@ -1,5 +1,5 @@
 {
-  "name": "typewriter",
+  "name": "plainion-typewriter",
   "displayName": "Typewriter 2.0",
   "description": "Automated typing. Based on 'typewriter' VsCode extension by dansilver",
   "version": "2.0.0",
@@ -43,7 +43,7 @@
     "compile": "tsc -watch -p ./",
     "test": "node ./node_modules/vscode/bin/test",
     "package": "vsce package",
-    "vscode:install": "code --install-extension typewriter-2.0.0.vsix",
+    "vscode:install": "code --install-extension plainion-typewriter-2.0.0.vsix",
     "patch": "npm run package && npm run vscode:install"
   },
   "devDependencies": {
