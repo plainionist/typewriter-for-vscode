@@ -46,7 +46,7 @@
         "test": "node ./node_modules/vscode/bin/test",
 		"package": "vsce package",
 		"vscode:install": "code --install-extension typewriter-1.1.0.vsix",
-		"patch": "npm run package && npm run install"
+		"patch": "npm run package && npm run vscode:install"
     },
     "devDependencies": {
 		"typescript": "^5.3.3",
