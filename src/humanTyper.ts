@@ -13,20 +13,16 @@ export function pause() {
 
 let resumeCall
 
-export function type(textToInsert: string, minSpeed: number, maxSpeed: number) {
+export function type(textToInsert: string, speed: number) {
   var editor = window.activeTextEditor
   if (!editor) {
     return
   }
 
-  typeTextRecursive(textToInsert, editor, editor.selection.end, minSpeed, maxSpeed)
+  typeTextRecursive(textToInsert, editor, editor.selection.end, speed)
 }
 
-let getRandomArbitrary = (min: number, max: number) => {
-  return Math.random() * (max - min) + min
-}
-
-function typeTextRecursive(buffer: string, editor: TextEditor, pos: Position, minSpeed: number, maxSpeed: number) {
+function typeTextRecursive(buffer: string, editor: TextEditor, pos: Position, speed: number) {
   let token = buffer.substring(0, 1)
   if (buffer.length == 0) {
     return
@@ -46,21 +42,21 @@ function typeTextRecursive(buffer: string, editor: TextEditor, pos: Position, mi
       editor.selection = newSelection
     })
     .then(() => {
-      let timeout = getRandomArbitrary(minSpeed, maxSpeed)
+      let timeout = speed
 
       // after a pause char (like a coma), take a breath
       if (charsToPauseOn.indexOf(token) != -1) {
-        timeout += maxSpeed * 1.5
+        timeout += speed * 1.5
       }
 
       // increment the position
       pos = new Position(pos.line, pos.character + token.length)
 
       setTimeout(() => {
-        if (!paused) typeTextRecursive(buffer, editor, pos, minSpeed, maxSpeed)
+        if (!paused) typeTextRecursive(buffer, editor, pos, speed)
         else {
           resumeCall = function () {
-            typeTextRecursive(buffer, editor, pos, minSpeed, maxSpeed)
+            typeTextRecursive(buffer, editor, pos, speed)
           }
         }
       }, timeout)
