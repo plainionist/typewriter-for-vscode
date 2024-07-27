@@ -44,12 +44,10 @@ function typeTextRecursive(buffer: string, editor: TextEditor, pos: Position, sp
     .then(() => {
       let timeout = speed
 
-      // after a pause char (like a coma), take a breath
       if (charsToPauseOn.indexOf(token) != -1) {
         timeout += speed * 1.5
       }
 
-      // increment the position
       pos = new Position(pos.line, pos.character + token.length)
 
       setTimeout(() => {
