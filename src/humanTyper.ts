@@ -29,7 +29,12 @@ function typeTextRecursive(buffer: string, editor: TextEditor, pos: Position, sp
   }
   buffer = buffer.slice(1, buffer.length)
 
-  if (token == `\n` || token == `\r\n`) {
+  if (token == `\r`) {
+    token = buffer.substring(0, 1)
+    buffer = buffer.slice(1, buffer.length)
+  }
+
+  if (token == `\n`) {
     pos = new Position(pos.line + 1, 0) //start of a new line
   }
 
