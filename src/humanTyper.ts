@@ -1,6 +1,6 @@
 import { window, workspace, Position, Selection, TextEditor } from 'vscode'
 
-const charsToPauseOn = [',', '.', '!']
+const charsToPauseOn = []
 let paused = false
 
 export function pause() {
